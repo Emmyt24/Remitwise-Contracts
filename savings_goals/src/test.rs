@@ -1,7 +1,5 @@
-#![cfg(test)]
-
 use super::*;
-use soroban_sdk::{testutils::Ledger, Env, String};
+use soroban_sdk::{Env, String};
 
 #[test]
 fn test_create_goal_unique_ids() {
@@ -88,15 +86,15 @@ fn test_is_goal_completed() {
     let id = client.create_goal(&String::from_str(&env, "Trip"), &1000, &2000000000);
 
     // Test not completed
-    assert_eq!(client.is_goal_completed(&id), false);
+    assert!(!client.is_goal_completed(&id));
 
     // Test completed (exactly target)
     client.add_to_goal(&id, &1000);
-    assert_eq!(client.is_goal_completed(&id), true);
+    assert!(client.is_goal_completed(&id));
 
     // Test completed (over target)
     client.add_to_goal(&id, &1);
-    assert_eq!(client.is_goal_completed(&id), true);
+    assert!(client.is_goal_completed(&id));
 }
 
 #[test]
