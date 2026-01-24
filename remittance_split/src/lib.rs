@@ -60,7 +60,12 @@ impl RemittanceSplit {
         }
 
         // Input validation: percentages must sum to 100
-        if !Self::is_valid_split(spending_percent, savings_percent, bills_percent, insurance_percent) {
+        if !Self::is_valid_split(
+            spending_percent,
+            savings_percent,
+            bills_percent,
+            insurance_percent,
+        ) {
             panic!("Percentages must sum to 100 and be valid");
         }
 
@@ -139,7 +144,12 @@ impl RemittanceSplit {
         }
 
         // Input validation: percentages must sum to 100
-        if !Self::is_valid_split(spending_percent, savings_percent, bills_percent, insurance_percent) {
+        if !Self::is_valid_split(
+            spending_percent,
+            savings_percent,
+            bills_percent,
+            insurance_percent,
+        ) {
             panic!("Percentages must sum to 100 and be valid");
         }
 
@@ -226,7 +236,6 @@ impl RemittanceSplit {
 
         vec![&env, spending, savings, bills, insurance]
     }
-
 
     /// Validate a percentage split for bounds and sum.
     fn is_valid_split(
